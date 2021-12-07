@@ -35,14 +35,14 @@ public class Club {
      * @return l'ensemble des plongées non conformes
      */
     public Set<Plongee> plongeesNonConformes() {
-        Set<Plongee> plongesConforme = new HashSet<Plongee>();
+        Set<Plongee> plongesNonConforme = new HashSet<Plongee>();
         for (Plongee p : plonges) {
 
             if (p.estConforme() == false) {
-                plongesConforme.add(p);
+                plongesNonConforme.add(p);
             }
         }
-        return plongesConforme;
+        return plongesNonConforme;
 
     }
 

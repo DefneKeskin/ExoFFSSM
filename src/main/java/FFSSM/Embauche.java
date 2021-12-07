@@ -1,6 +1,7 @@
 package FFSSM;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Embauche {
 
@@ -23,8 +24,7 @@ public class Embauche {
      * @param dateFin la date à laquelle cette embauche est terminée
      */
     public void terminer(LocalDate dateFin) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");	    
+        fin = dateFin;	    
     }
     
     /**
@@ -78,6 +78,45 @@ public class Embauche {
     public LocalDate getDebut() {
         return debut;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.debut);
+        hash = 97 * hash + Objects.hashCode(this.fin);
+        hash = 97 * hash + Objects.hashCode(this.employe);
+        hash = 97 * hash + Objects.hashCode(this.employeur);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Embauche other = (Embauche) obj;
+        if (!Objects.equals(this.debut, other.debut)) {
+            return false;
+        }
+        if (!Objects.equals(this.fin, other.fin)) {
+            return false;
+        }
+        if (!Objects.equals(this.employe, other.employe)) {
+            return false;
+        }
+        if (!Objects.equals(this.employeur, other.employeur)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
     
 }

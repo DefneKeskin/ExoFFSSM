@@ -52,7 +52,8 @@ public class NewEmptyJUnitTest {
         plonge2 = new Plongee(m1);
 
     }
-
+    //pas besoin de verifier les setters et getters et toString 
+    
     //LICENCE
     @Test
     public void testEstValide() {
@@ -83,6 +84,7 @@ public class NewEmptyJUnitTest {
 
     @Test
     public void testDerniereLicence() {
+        //ce test verifie aussi ajouteLicence 
         //revient à la même du dessus car ma liste de licence possède qu'une seule licence
         p1.ajouteLicence("78", LocalDate.of(2019, 11, 24), club1);
         assertEquals("78", p1.derniereLicence().getNumero(), "La dernière licence ajouté doit être de numero 78");
@@ -140,7 +142,7 @@ public class NewEmptyJUnitTest {
     }*/
     @Test
     public void testGetDate() {
-        assertEquals(LocalDate.of(2021, 12, 6), plonge1.getDate(), "La date doit etre  2021, 12, 6");
+        assertEquals(LocalDate.of(2021, 12, 6), plonge1.getDate(), "La date retourné doit etre  2021, 12, 6");
     }
 
     @Test
@@ -163,15 +165,16 @@ public class NewEmptyJUnitTest {
         //Conforme
         p1.ajouteLicence("78", LocalDate.of(2021, 11, 24), club1);
         plonge1.ajouteParticipant(p1);
-        Set<Plongee> plongesConforme2 = new HashSet<Plongee>();
-        assertEquals(club1.plongeesNonConformes(),plongesConforme2, "La plonge doit etre ajoute car elle est conforme" );
+        Set<Plongee> plongesNonConforme2 = new HashSet<Plongee>();
+        assertEquals(club1.plongeesNonConformes(),plongesNonConforme2, "La plonge ne doit pas etre ajouté car elle est conforme" );
         
         //PlongeeNonConforme
+        //test aussi la methode organisePlongee
        p1.ajouteLicence("78", LocalDate.of(2019, 11, 24), club1);
        club1.organisePlongee(plonge3);
         plonge3.ajouteParticipant(p1);
-        plongesConforme2.add(plonge3);
-        assertEquals(club1.plongeesNonConformes(),plongesConforme2, "La plonge doit etre ajoute car elle est conforme" );
+        plongesNonConforme2.add(plonge3);
+        assertEquals(club1.plongeesNonConformes(),plongesNonConforme2, "La plonge doit etre ajoute car elle est non conforme" );
 
     
     }

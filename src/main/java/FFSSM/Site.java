@@ -12,7 +12,7 @@ public class Site
 		this.nom = nom;
 		this.details = details;
 	}
-
+     
 	public String getNom() {
 		return nom;
 	}
